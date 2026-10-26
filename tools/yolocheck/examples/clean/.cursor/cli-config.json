@@ -1,0 +1,6 @@
+{
+  "permissions": {
+    "allow": ["Shell(ls)", "Shell(git status)", "Read(src/**)", "Write(src/**)"],
+    "deny": ["Read(.env*)", "Read(**/*.pem)", "Read(~/.ssh/**)", "Shell(curl)"]
+  }
+}

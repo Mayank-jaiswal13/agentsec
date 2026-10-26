@@ -1,0 +1,61 @@
+{
+  "name": "permissive",
+  "description": "Permissive example: allow everything by default; block only secrets and clearly destructive/exfil shell; warn on unknown hosts.",
+  "default": "allow",
+  "tools": {
+    "deny": [
+      "delete_repo",
+      "drop_*"
+    ],
+    "warn": [
+      "send_*",
+      "delete_*"
+    ]
+  },
+  "rules": [
+    {
+      "id": "no-secret-paths",
+      "kind": "path",
+      "severity": "deny",
+      "deny": [
+        "~/.ssh/**",
+        "~/.aws/credentials",
+        "**/.env",
+        "*.pem",
+        "id_rsa*"
+      ]
+    },
+    {
+      "id": "dangerous-shell",
+      "kind": "command",
+      "severity": "deny",
+      "builtin_patterns": true
+    },
+    {
+      "id": "metadata-endpoint",
+      "kind": "host",
+      "severity": "deny",
+      "deny": [
+        "169.254.169.254",
+        "metadata.google.internal"
+      ]
+    },
+    {
+      "id": "unknown-hosts",
+      "kind": "host",
+      "severity": "warn",
+      "allow": [
+        "*.github.com",
+        "github.com",
+        "*.githubusercontent.com",
+        "pypi.org",
+        "*.python.org",
+        "registry.npmjs.org"
+      ]
+    }
+  ],
+  "caps": {
+    "total": 500,
+    "severity": "warn"
+  }
+}

@@ -1,0 +1,6 @@
+---
+description: Python style
+globs: src/**/*.py
+alwaysApply: false
+---
+Follow PEP 8. Prefer pathlib over os.path.

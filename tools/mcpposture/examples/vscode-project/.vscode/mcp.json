@@ -1,0 +1,24 @@
+{
+  // VS Code style: top-level "servers" plus "inputs"
+  "inputs": [
+    { "type": "promptString", "id": "github-token", "description": "GitHub Personal Access Token", "password": true },
+    { "type": "promptString", "id": "perplexity-key", "description": "Perplexity API Key" }
+  ],
+  "servers": {
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.example/mcp/",
+      "headers": { "Authorization": "Bearer ${input:github-token}" }
+    },
+    "perplexity": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "server-perplexity-ask"],
+      "env": { "PERPLEXITY_API_KEY": "${input:perplexity-key}" }
+    },
+    "local-dev": {
+      "type": "sse",
+      "url": "http://localhost:8931/sse"
+    },
+  }
+}

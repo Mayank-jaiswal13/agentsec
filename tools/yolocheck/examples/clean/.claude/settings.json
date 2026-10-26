@@ -1,0 +1,28 @@
+// Tight Claude Code settings example
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run test:*)",
+      "Bash(npm run lint)",
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(python -m pytest:*)",
+      "Read(./src/**)",
+      "Edit(./src/**)",
+      "WebFetch(domain:docs.python.org)"
+    ],
+    "ask": ["Bash(git push:*)", "Bash(git commit:*)"],
+    "deny": [
+      "Read(./.env)", "Read(./.env.*)", "Read(~/.ssh/**)", "Read(**/*.pem)", "Read(**/*.key)",
+      "Bash(curl:*)", "Bash(wget:*)", "Bash(sudo:*)", "Bash(rm:*)"
+    ],
+    "defaultMode": "default",
+    "disableBypassPermissionsMode": "disable"
+  },
+  "enableAllProjectMcpServers": false,
+  "hooks": {
+    "PostToolUse": [
+      { "matcher": "Edit", "hooks": [ { "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/format.sh" } ] }
+    ]
+  }
+}

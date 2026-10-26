@@ -1,0 +1,7 @@
+# Calls an agent made (one per line: METHOD path). Concrete values are normalized.
+GET /repos/example-org/demo-app/issues
+POST /repos/example-org/demo-app/issues/42/labels
+GET https://api.github.com/repos/example-org/demo-app/pulls/7
+GET /repos/{owner}/{repo}/commits/abc123/status
+POST /repos/example-org/demo-app/issues/7/comments
+GET /repos/example-org/demo-app/contents/src/app.py?ref=main

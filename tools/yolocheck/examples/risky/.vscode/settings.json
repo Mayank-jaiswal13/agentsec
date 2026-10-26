@@ -1,0 +1,14 @@
+{
+  // FAKE example: VS Code Copilot agent with global auto-approve
+  "editor.fontSize": 14,
+  "chat.tools.global.autoApprove": true,
+  "chat.tools.terminal.autoApprove": {
+    "/.*/": true,
+    "curl": true,
+    "rm": { "approve": true, "matchCommandLine": true },
+    "git status": true
+  },
+  "chat.tools.urls.autoApprove": { "https://*": true },
+  "chat.tools.edits.autoApprove": { "**/*": true },
+  "chat.agent.superAutoApproveMode": "on"
+}

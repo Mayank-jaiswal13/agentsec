@@ -1,0 +1,4 @@
+sku,name,qty,delta
+W-100,Widget small,12,-3
+W-200,Widget large,4,+2
+W-300,Widget mega,0,-1.5

@@ -1,0 +1,7 @@
+# Tight Codex config example
+sandbox_mode = "workspace-write"
+approval_policy = "on-request"
+
+[sandbox_workspace_write]
+network_access = false
+writable_roots = ["/home/dev/projects/app/build"]

@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": ["Shell(*)", "Shell(ssh)", "Read(**)", "Write(~/**)"],
+    "deny": []
+  },
+  "yoloMode": true
+}

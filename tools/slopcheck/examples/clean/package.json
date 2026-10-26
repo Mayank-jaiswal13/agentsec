@@ -1,0 +1,12 @@
+{
+  "name": "clean-demo",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "express": "^4.19.2",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

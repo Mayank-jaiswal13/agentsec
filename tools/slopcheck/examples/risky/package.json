@@ -1,0 +1,18 @@
+{
+  "name": "risky-demo",
+  "version": "0.0.0",
+  "private": true,
+  "description": "FAKE example generated to demo slopcheck. Do NOT install.",
+  "dependencies": {
+    "expresss": "^4.19.2",
+    "react": "^18.3.1",
+    "lodash-utils-helper": "1.0.0",
+    "axois": "*",
+    "openai-sdk-js": "latest",
+    "requests": "^1.0.0",
+    "left-pad-lib": "github:example/left-pad"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

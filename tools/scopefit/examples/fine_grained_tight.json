@@ -1,0 +1,7 @@
+{
+  "metadata": "read",
+  "issues": "write",
+  "pull_requests": "read",
+  "contents": "read",
+  "statuses": "read"
+}

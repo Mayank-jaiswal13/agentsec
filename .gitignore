@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+.python-version
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Editors / OS
+.idea/
+!tools/yolocheck/examples/**/!tools/mcpposture/examples/**/*.swp
+.DS_Store
+
+# Generated at test time: tracesweep examples contain secret-shaped FAKE values,
+# so they are built by examples/make_examples.py instead of being committed.
+tools/tracesweep/examples/claude_session.jsonl
+tools/tracesweep/examples/openai_chat.json
+tools/tracesweep/examples/agent_run.log

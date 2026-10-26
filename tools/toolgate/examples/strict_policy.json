@@ -1,0 +1,146 @@
+{
+  "name": "strict",
+  "description": "Strict example: default deny, workspace-only file access, egress allowlist, dangerous shell blocked.",
+  "default": "deny",
+  "tools": {
+    "allow": [
+      "read_file",
+      "list_dir",
+      "search*",
+      "write_file",
+      "web_fetch",
+      "run_shell"
+    ],
+    "deny": [
+      "delete_*",
+      "*_admin",
+      "send_email",
+      "transfer_*"
+    ],
+    "warn": [
+      "write_file"
+    ]
+  },
+  "rules": [
+    {
+      "id": "no-secret-paths",
+      "kind": "path",
+      "severity": "deny",
+      "description": "Never touch credentials or system config, wherever the path appears.",
+      "deny": [
+        "~/.ssh/**",
+        "~/.aws/**",
+        "~/.gnupg/**",
+        "~/.config/gh/**",
+        "~/.netrc",
+        "~/.docker/config.json",
+        "**/.env",
+        "**/.env.*",
+        "*.pem",
+        "id_rsa*",
+        "id_ed25519*",
+        "/etc/**",
+        "/proc/**",
+        "/root/**"
+      ]
+    },
+    {
+      "id": "workspace-only",
+      "kind": "path",
+      "severity": "deny",
+      "tools": [
+        "read_file",
+        "write_file",
+        "list_dir"
+      ],
+      "description": "File tools may only use paths under the project or /tmp.",
+      "allow": [
+        "./**",
+        "/srv/app/**",
+        "/tmp/**"
+      ]
+    },
+    {
+      "id": "egress-allowlist",
+      "kind": "host",
+      "severity": "deny",
+      "description": "Network access only to known hosts.",
+      "allow": [
+        "api.github.com",
+        "*.githubusercontent.com",
+        "pypi.org",
+        "files.pythonhosted.org",
+        "registry.npmjs.org",
+        "docs.python.org"
+      ],
+      "deny": [
+        "169.254.169.254",
+        "metadata.google.internal",
+        "*.ngrok.io",
+        "*.ngrok-free.app",
+        "pastebin.com",
+        "transfer.sh",
+        "webhook.site"
+      ]
+    },
+    {
+      "id": "dangerous-shell",
+      "kind": "command",
+      "severity": "deny",
+      "description": "Block destructive / exfiltration-shaped shell commands.",
+      "deny_programs": [
+        "nc",
+        "ncat",
+        "netcat",
+        "socat",
+        "telnet",
+        "mkfs*",
+        "shred",
+        "sudo",
+        "su",
+        "chown"
+      ],
+      "deny_patterns": [
+        "\\bgit\\s+push\\s+.*--force",
+        "\\bhistory\\s+-c\\b",
+        "\\bcrontab\\s+-r\\b"
+      ],
+      "builtin_patterns": true
+    },
+    {
+      "id": "shell-network-warn",
+      "kind": "command",
+      "severity": "warn",
+      "description": "Flag (but allow) shell commands that use the network.",
+      "deny_programs": [
+        "curl",
+        "wget",
+        "ssh",
+        "scp",
+        "rsync"
+      ],
+      "builtin_patterns": false
+    },
+    {
+      "id": "no-inline-secrets",
+      "kind": "regex",
+      "severity": "deny",
+      "description": "Arguments must not carry credential-looking strings.",
+      "deny_patterns": [
+        "-----BEGIN [A-Z ]*PRIVATE KEY-----",
+        "\\bAKIA[0-9A-Z]{16}\\b",
+        "\\bgh[pousr]_[A-Za-z0-9]{30,}\\b",
+        "\\bsk-[A-Za-z0-9_\\-]{20,}"
+      ]
+    }
+  ],
+  "caps": {
+    "total": 30,
+    "per_tool": {
+      "run_shell": 8,
+      "web_fetch": 5,
+      "*": 15
+    },
+    "severity": "deny"
+  }
+}

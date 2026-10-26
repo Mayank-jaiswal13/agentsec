@@ -1,0 +1,4 @@
+{"type": "tool_call", "id": "g1", "tool": "read_file", "args": {"path": "README.md"}}
+{"type": "tool_result", "id": "g1", "result": "..."}
+{"type": "tool_call", "id": "g2", "tool": "run_shell", "args": {"cmd": "rm -rf / --no-preserve-root"}}
+{"type": "tool_call", "id": "g3", "tool": "run_shell", "args": {"cmd": "git status"}}

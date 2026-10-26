@@ -1,0 +1,13 @@
+{
+  "_note": "EXAMPLE PRICE TABLE ONLY. Prices change often and these numbers are NOT authoritative; they may be wrong or out of date. Check your provider's current pricing page and edit this file (or pass --prices your.json). Units: USD per 1,000,000 tokens. Keys: input, output, optional cache_read, cache_write (if omitted they are charged at the input rate). Models not listed are reported as 'unpriced', never guessed.",
+  "currency": "USD",
+  "unit": "per_1m_tokens",
+  "models": {
+    "gpt-4o":            {"input": 2.50, "cache_read": 1.25, "output": 10.00},
+    "gpt-4o-mini":       {"input": 0.15, "cache_read": 0.075, "output": 0.60},
+    "o3-mini":           {"input": 1.10, "cache_read": 0.55, "output": 4.40},
+    "claude-sonnet-4":   {"input": 3.00, "cache_read": 0.30, "cache_write": 3.75, "output": 15.00},
+    "claude-3-5-haiku":  {"input": 0.80, "cache_read": 0.08, "cache_write": 1.00, "output": 4.00},
+    "example-local-7b":  {"input": 0.00, "output": 0.00}
+  }
+}

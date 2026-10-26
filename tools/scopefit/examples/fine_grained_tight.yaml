@@ -1,0 +1,6 @@
+# Same tight grant, YAML-ish form (as copied from the fine-grained PAT UI)
+Metadata: read-only
+Issues: read and write
+Pull requests: read-only
+Contents: read-only
+Commit statuses: read-only

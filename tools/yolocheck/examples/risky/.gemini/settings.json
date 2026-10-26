@@ -1,0 +1,11 @@
+{
+  // FAKE example: Gemini CLI with YOLO-style settings
+  "general": { "defaultApprovalMode": "yolo" },
+  "tools": {
+    "autoAccept": true,
+    "allowed": ["run_shell_command", "run_shell_command(curl)"]
+  },
+  "mcpServers": {
+    "random-server": { "command": "npx", "args": ["-y", "some-mcp"], "trust": true }
+  }
+}

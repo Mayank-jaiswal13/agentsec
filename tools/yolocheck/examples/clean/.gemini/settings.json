@@ -1,0 +1,5 @@
+{
+  "general": { "defaultApprovalMode": "default" },
+  "tools": { "allowed": ["run_shell_command(git status)", "run_shell_command(npm test)"] },
+  "security": { "disableYoloMode": true }
+}

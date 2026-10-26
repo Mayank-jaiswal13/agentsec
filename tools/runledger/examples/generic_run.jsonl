@@ -1,0 +1,4 @@
+{"event": "llm_call", "trace_id": "tr-local-1", "time": "2026-10-25T12:00:00Z", "model_name": "example-local-7b", "tool": "planner", "metrics": {"tokens_in": 900, "tokens_out": 150}}
+{"event": "llm_call", "trace_id": "tr-local-1", "time": "2026-10-25T12:00:05Z", "model_name": "mystery-model-x", "tool": "coder", "stats": {"inputTokens": 4000, "outputTokens": 1200, "cachedInputTokens": 0}}
+{"event": "llm_call", "trace_id": "tr-local-1", "time": "2026-10-25T12:00:09Z", "modelVersion": "gpt-4o-mini", "usageMetadata": {"promptTokenCount": 2500, "candidatesTokenCount": 300, "cachedContentTokenCount": 1000}}
+{"event": "note", "trace_id": "tr-local-1", "message": "no usage on this line; it is ignored"}

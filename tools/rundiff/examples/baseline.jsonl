@@ -1,0 +1,11 @@
+{"role": "system", "content": "You are a release-notes assistant."}
+{"role": "user", "content": "Summarize the release notes for v2.3 and check recent commits."}
+{"role": "assistant", "content": null, "tool_calls": [{"id": "call_b1", "type": "function", "function": {"name": "search_docs", "arguments": "{\"query\": \"v2.3 release notes\", \"limit\": 5, \"request_id\": \"req-001\"}"}}], "usage": {"prompt_tokens": 420, "completion_tokens": 38}}
+{"role": "tool", "tool_call_id": "call_b1", "content": "{\"hits\":[\"docs/RELEASE.md\"],\"took_ms\":12}"}
+{"role": "assistant", "content": null, "tool_calls": [{"id": "call_b2", "type": "function", "function": {"name": "read_file", "arguments": "{\"path\": \"./docs/RELEASE.md\"}"}}], "usage": {"prompt_tokens": 510, "completion_tokens": 22}}
+{"role": "tool", "tool_call_id": "call_b2", "content": "## v2.3\n- Faster sync\n- Fixed login bug\n- New export command"}
+{"role": "assistant", "content": null, "tool_calls": [{"id": "call_b3", "type": "function", "function": {"name": "run_shell", "arguments": "{\"command\": \"git log --oneline -5\"}"}}], "usage": {"prompt_tokens": 640, "completion_tokens": 25}}
+{"role": "tool", "tool_call_id": "call_b3", "content": "a1b2c3 fix login\nd4e5f6 faster sync\n0a1b2c export cmd"}
+{"role": "assistant", "content": null, "tool_calls": [{"id": "call_b4", "type": "function", "function": {"name": "list_dir", "arguments": "{\"path\": \"./docs\"}"}}], "usage": {"prompt_tokens": 700, "completion_tokens": 18}}
+{"role": "tool", "tool_call_id": "call_b4", "content": "[\"RELEASE.md\",\"INSTALL.md\"]"}
+{"role": "assistant", "content": "v2.3 brings faster sync, a login bug fix, and a new export command. Recent commits match these changes.", "usage": {"prompt_tokens": 760, "completion_tokens": 40}}

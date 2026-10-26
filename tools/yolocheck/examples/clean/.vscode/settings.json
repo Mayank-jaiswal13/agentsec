@@ -1,0 +1,10 @@
+{
+  "editor.fontSize": 14,
+  "chat.tools.global.autoApprove": false,
+  "chat.tools.terminal.autoApprove": {
+    "git status": true,
+    "npm test": true,
+    "rm": false,
+    "curl": false
+  }
+}

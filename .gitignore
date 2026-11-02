@@ -27,3 +27,7 @@ htmlcov/
 tools/tracesweep/examples/claude_session.jsonl
 tools/tracesweep/examples/openai_chat.json
 tools/tracesweep/examples/agent_run.log
+
+# pickleprobe examples are generated (binary pickles), never committed.
+tools/pickleprobe/examples/risky/
+tools/pickleprobe/examples/clean/

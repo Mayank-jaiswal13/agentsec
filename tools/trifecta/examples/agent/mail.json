@@ -1,0 +1,8 @@
+[
+  {"type": "function", "function": {"name": "search_inbox", "description": "Search the user's email inbox.",
+   "parameters": {"type": "object", "properties": {"query": {"type": "string"}}}}},
+  {"type": "function", "function": {"name": "send_email", "description": "Send an email.",
+   "parameters": {"type": "object", "properties": {"to": {"type": "string"}, "subject": {"type": "string"}, "body": {"type": "string"}}}}},
+  {"type": "function", "function": {"name": "run_shell", "description": "Run a shell command on the host.",
+   "parameters": {"type": "object", "properties": {"command": {"type": "string"}}}}}
+]

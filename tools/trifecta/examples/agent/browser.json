@@ -1,0 +1,7 @@
+{"server": "fetch", "tools": [
+  {"name": "fetch", "description": "Fetches a URL from the internet and returns the page as markdown.",
+   "inputSchema": {"type": "object", "properties": {"url": {"type": "string"}, "max_length": {"type": "integer"}}},
+   "annotations": {"readOnlyHint": true, "openWorldHint": true}},
+  {"name": "get_weather", "description": "Current weather for a city.",
+   "inputSchema": {"type": "object", "properties": {"city": {"type": "string"}}}}
+]}

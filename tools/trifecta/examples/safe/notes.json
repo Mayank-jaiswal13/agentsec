@@ -1,0 +1,8 @@
+{"server": "notes", "tools": [
+  {"name": "search_notes", "description": "Search the user's private notes.",
+   "input_schema": {"type": "object", "properties": {"query": {"type": "string"}}}},
+  {"name": "summarize", "description": "Summarize text the user pasted.",
+   "input_schema": {"type": "object", "properties": {"text": {"type": "string"}}}},
+  {"name": "get_status_page", "description": "Fetch the status page of an allow-listed service.",
+   "input_schema": {"type": "object", "properties": {"url": {"type": "string", "enum": ["https://status.example.com/"]}}}}
+]}

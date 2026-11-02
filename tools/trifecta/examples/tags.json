@@ -1,0 +1,5 @@
+{"overrides": {
+  "*/get_weather": [],
+  "notes/summarize": [],
+  "notes/get_status_page": []
+}}

@@ -1,0 +1,10 @@
+{"jsonrpc": "2.0", "id": 1, "result": {"tools": [
+  {"name": "read_file", "description": "Read a file from the local filesystem.",
+   "inputSchema": {"type": "object", "properties": {"path": {"type": "string"}}},
+   "annotations": {"readOnlyHint": true}},
+  {"name": "write_file", "description": "Create or overwrite a file.",
+   "inputSchema": {"type": "object", "properties": {"path": {"type": "string"}, "content": {"type": "string"}}},
+   "annotations": {"destructiveHint": true}},
+  {"name": "list_directory", "description": "List entries in a directory.",
+   "inputSchema": {"type": "object", "properties": {"path": {"type": "string"}}}}
+]}}

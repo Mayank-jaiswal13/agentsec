@@ -1,0 +1,122 @@
+{
+  "files": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "tools": [
+        {
+          "name": "read_file",
+          "description": "Read a UTF-8 text file inside the project workspace.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "description": "Relative path inside the workspace",
+                "pattern": "^[^/~].*"
+              }
+            },
+            "required": [
+              "path"
+            ],
+            "additionalProperties": false
+          },
+          "annotations": {
+            "readOnlyHint": true,
+            "openWorldHint": false
+          }
+        },
+        {
+          "name": "list_dir",
+          "description": "List entries of a workspace directory.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "dir": {
+                "type": "string"
+              }
+            }
+          },
+          "annotations": {
+            "readOnlyHint": true,
+            "openWorldHint": false
+          }
+        },
+        {
+          "name": "search_files",
+          "description": "Search workspace files for a string.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "string"
+              },
+              "mode": {
+                "type": "string",
+                "enum": [
+                  "literal",
+                  "word"
+                ]
+              }
+            },
+            "required": [
+              "query"
+            ]
+          },
+          "annotations": {
+            "readOnlyHint": true
+          }
+        }
+      ]
+    }
+  },
+  "mail": [
+    {
+      "type": "function",
+      "function": {
+        "name": "send_email",
+        "description": "Send an email to a colleague. Ask the user to confirm first.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "to": {
+              "type": "string",
+              "enum": [
+                "team@example.com",
+                "boss@example.com"
+              ]
+            },
+            "subject": {
+              "type": "string"
+            },
+            "body": {
+              "type": "string",
+              "maxLength": 2000
+            }
+          },
+          "required": [
+            "to",
+            "subject",
+            "body"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "list_inbox",
+        "description": "List the 20 most recent inbox messages.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "limit": {
+              "type": "integer",
+              "maximum": 50
+            }
+          }
+        }
+      }
+    }
+  ]
+}

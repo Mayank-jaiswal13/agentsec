@@ -1,0 +1,166 @@
+{
+  "created": "2026-11-02T23:11:41+00:00",
+  "servers": {
+    "files": {
+      "tools": {
+        "list_dir": {
+          "definition": {
+            "annotations": {
+              "openWorldHint": false,
+              "readOnlyHint": true
+            },
+            "description": "List entries of a workspace directory.",
+            "inputSchema": {
+              "properties": {
+                "dir": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "name": "list_dir"
+          },
+          "hashes": {
+            "annotations_sha256": "9bedd1194137a0bb0966349836ba5c87999118423b92c6c861827bf3d91eff89",
+            "body_sha256": "5f8c901fcefa911f3c74818d95faa601a0d25a2248e3d8071ae10148409895f4",
+            "description_sha256": "fec45a59ce9c82322ef911312ee1ee9e4d341506573c9c55f9e0bd92d74e72e3",
+            "schema_sha256": "2f27e056f35c4cc2fa44ed5ec68cdfb363878beb1e788a2ed8a2368f7fe628d5",
+            "sha256": "860ab5089e6e459a59f91a30a914a005c91853d9d18b42fafbacc04ae6f797fc"
+          }
+        },
+        "read_file": {
+          "definition": {
+            "annotations": {
+              "openWorldHint": false,
+              "readOnlyHint": true
+            },
+            "description": "Read a UTF-8 text file inside the project workspace.",
+            "inputSchema": {
+              "additionalProperties": false,
+              "properties": {
+                "path": {
+                  "description": "Relative path inside the workspace",
+                  "pattern": "^[^/~].*",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "path"
+              ],
+              "type": "object"
+            },
+            "name": "read_file"
+          },
+          "hashes": {
+            "annotations_sha256": "9bedd1194137a0bb0966349836ba5c87999118423b92c6c861827bf3d91eff89",
+            "body_sha256": "dd009dc1fcb2b43b64b17839f8e3b5459a72861a6e1400272c6ea2665eb9031c",
+            "description_sha256": "66d91ff6e1a4e65b7af67c91ccde330ac42b91c354627cf3bb420109fde471c7",
+            "schema_sha256": "2412723762f6e5aa12ace206c0ddebf1dacf64e875973eb455c89894866df0aa",
+            "sha256": "a7ac23da17e7cf544179838c69a2cd68829fc935fdd362ac480eb23c84e65362"
+          }
+        },
+        "search_files": {
+          "definition": {
+            "annotations": {
+              "readOnlyHint": true
+            },
+            "description": "Search workspace files for a string.",
+            "inputSchema": {
+              "properties": {
+                "mode": {
+                  "enum": [
+                    "literal",
+                    "word"
+                  ],
+                  "type": "string"
+                },
+                "query": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "query"
+              ],
+              "type": "object"
+            },
+            "name": "search_files"
+          },
+          "hashes": {
+            "annotations_sha256": "8803fb4b4971327e527bfc007f694c25d5553baffc4acd00784c86ae97dfd056",
+            "body_sha256": "a8b880d536684130f86f9983f7a813be421179e3919e071a4c61ab1532fd2326",
+            "description_sha256": "0dd323a1d2600cfe41f3ffa85ee6a59a312d39c6959c8c8ce5433ef8347d57c7",
+            "schema_sha256": "6dba4f511093588cbabea3dc437cbb075b0ae461afe93a2c2c5bdd2319bd5196",
+            "sha256": "3f3fe6df0bdeb9c775c17624033e55433cb56f46c0210afcd28d7f5424b1668c"
+          }
+        }
+      }
+    },
+    "mail": {
+      "tools": {
+        "list_inbox": {
+          "definition": {
+            "annotations": {},
+            "description": "List the 20 most recent inbox messages.",
+            "inputSchema": {
+              "properties": {
+                "limit": {
+                  "maximum": 50,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "name": "list_inbox"
+          },
+          "hashes": {
+            "annotations_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "body_sha256": "3b0f36acaac1e0df6da30cc7eeda5176378bb166eb5a7f48ead738bd26fc124f",
+            "description_sha256": "2d910bd38db157347755b8200ddee695dfcb96670abb319b288c43b21b466e32",
+            "schema_sha256": "a71c266b88acfbbe304fcf2ff99dce2320529510d8e886738b1335f80a40ea01",
+            "sha256": "c8de5d5b7bd4370838badf38f47a3a874c5b277fa23359cb8ab482911106e849"
+          }
+        },
+        "send_email": {
+          "definition": {
+            "annotations": {},
+            "description": "Send an email to a colleague. Ask the user to confirm first.",
+            "inputSchema": {
+              "properties": {
+                "body": {
+                  "maxLength": 2000,
+                  "type": "string"
+                },
+                "subject": {
+                  "type": "string"
+                },
+                "to": {
+                  "enum": [
+                    "team@example.com",
+                    "boss@example.com"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "to",
+                "subject",
+                "body"
+              ],
+              "type": "object"
+            },
+            "name": "send_email"
+          },
+          "hashes": {
+            "annotations_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "body_sha256": "2403f6534a9b9d79ccb833d30458f6ece8c5f4ff08cd57ab3521f62996602ce1",
+            "description_sha256": "0ee128fac2ee66b495bf1b3b39b840792352bdf46147e3a38a083bfe43cf2e0b",
+            "schema_sha256": "c702368079dd80384baaac9f07dc6668dc553b5a4cc81f768dff21637b8aa42a",
+            "sha256": "064f1123bb1fbed1ab10bec588542cc78b1c72a4469d94b339a20a7a5caf0ff9"
+          }
+        }
+      }
+    }
+  },
+  "source": "baseline.json",
+  "toolpin": 1
+}

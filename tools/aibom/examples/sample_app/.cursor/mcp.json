@@ -1,0 +1,6 @@
+{
+  "mcpServers": {
+    "github": { "command": "npx", "args": ["-y", "@modelcontextprotocol/server-github"] },
+    "docs-search": { "url": "https://mcp.docs.example/sse" }
+  }
+}

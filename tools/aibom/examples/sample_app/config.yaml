@@ -1,0 +1,4 @@
+llm:
+  provider: gemini
+  model: gemini-2.5-flash
+  endpoint: https://generativelanguage.googleapis.com/v1beta

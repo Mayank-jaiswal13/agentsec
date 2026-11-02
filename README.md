@@ -1,6 +1,6 @@
 # agentsec
 
-**agentsec** is a kit of 13 small, offline security tools for people building and running AI
+**agentsec** is a kit of 15 small, offline security tools for people building and running AI
 agents: MCP servers and clients, coding agents, RAG pipelines and tool-calling apps.
 
 Each tool is a single Python file that uses **only the standard library**. There is nothing to
@@ -28,6 +28,8 @@ built from fake data, and a unittest suite.
 | [ragsieve](tools/ragsieve/) | Scans documents for indirect prompt injection and exfiltration before they are ingested into a RAG knowledge base (hidden text, Unicode smuggling, exfil URLs, fake role tokens) | `python3 ragsieve.py examples/poisoned` |
 | [yolocheck](tools/yolocheck/) | Grades coding-agent permission and autonomy settings (Claude Code, Codex CLI, Gemini CLI, VS Code Copilot, Cursor CLI) from A to F | `python3 yolocheck.py examples/risky` |
 | [rulesguard](tools/rulesguard/) | Finds "rules file backdoors" in agent instruction files (AGENTS.md, CLAUDE.md, .cursorrules, .mdc rules, copilot-instructions and more) | `python3 rulesguard.py examples/risky` |
+| [outfence](tools/outfence/) | Scans and sanitizes LLM *output* before it is rendered: zero-click exfiltration via markdown images and HTML/CSS, data- or secret-carrying links, dangerous URL schemes, terminal escapes (OSC 52 clipboard, OSC 8 links), invisible Unicode and `curl \| sh` suggestions | `python3 outfence.py examples` |
+| [aibom](tools/aibom/) | AI bill of materials for a repo: LLM/agent SDKs, model IDs, weight files, AI endpoints, MCP servers, agent files and key env-var names, with governance notes (pickle weights, unpinned deps, floating model aliases) and a baseline diff to catch shadow AI in CI. Outputs text, JSON or CycloneDX 1.6 | `python3 aibom.py examples/sample_app --baseline examples/baseline.json` |
 
 Run the "Try it" commands from inside the tool's folder (`cd tools/<name>`). Every tool
 supports `--help` and `--json`. Seven tools also emit SARIF (`--sarif`), and most have a `--fail-on` /
@@ -51,7 +53,7 @@ such as `scopefit_mapping.json`, `slopcheck_known.json` or `prices.json`) onto y
 ### Run the tests
 
 ```sh
-python3 run_tests.py            # all 13 suites (or: make test)
+python3 run_tests.py            # all 15 suites (or: make test)
 python3 run_tests.py toolgate   # one tool
 ```
 
@@ -65,7 +67,7 @@ Python 3.10, 3.11, 3.12 and 3.13 on `ubuntu-latest` for every push and pull requ
   through a series of build sessions, one tool at a time. A human chose the direction and
   reviewed the result before release. Treat the code as you would any new, lightly reviewed
   open-source project: read it before relying on it.
-- **What it was tested against.** Each tool ships with a unittest suite (628 tests in total)
+- **What it was tested against.** Each tool ships with a unittest suite (712 tests in total)
   and with example inputs built from **synthetic, fake data**: fake keys, fake transcripts,
   fake configs and fake documents. The tests check rule behavior, output formats and CLI exit
   codes against those fixtures. The tools have **not** been benchmarked against real-world

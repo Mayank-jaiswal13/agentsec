@@ -1,0 +1,5 @@
+openai==1.51.0
+anthropic>=0.34
+langchain-openai
+chromadb==0.5.5
+requests==2.32.3

@@ -1,0 +1,273 @@
+{
+  "tool": "aibom",
+  "version": "0.1.0",
+  "root": "sample_app",
+  "components": [
+    {
+      "kind": "sdk",
+      "name": "@ai-sdk/openai",
+      "locations": [
+        "web/chat.ts:2",
+        "web/package.json:6"
+      ],
+      "ecosystem": "npm",
+      "label": "Vercel AI SDK provider",
+      "imported": true,
+      "version": "1.0.5",
+      "declared": true
+    },
+    {
+      "kind": "sdk",
+      "name": "@modelcontextprotocol/sdk",
+      "locations": [
+        "web/chat.ts:3",
+        "web/package.json:7"
+      ],
+      "ecosystem": "npm",
+      "label": "Model Context Protocol",
+      "imported": true,
+      "version": "^1.0.0",
+      "declared": true
+    },
+    {
+      "kind": "sdk",
+      "name": "ai",
+      "locations": [
+        "web/chat.ts:1",
+        "web/package.json:5"
+      ],
+      "ecosystem": "npm",
+      "label": "Vercel AI SDK",
+      "imported": true,
+      "version": "^4.0.0",
+      "declared": true
+    },
+    {
+      "kind": "sdk",
+      "name": "anthropic",
+      "locations": [
+        "app.py:4",
+        "requirements.txt:2"
+      ],
+      "ecosystem": "pypi",
+      "label": "Anthropic",
+      "imported": true,
+      "version": ">=0.34",
+      "declared": true
+    },
+    {
+      "kind": "sdk",
+      "name": "chromadb",
+      "locations": [
+        "rag.py:2",
+        "requirements.txt:4"
+      ],
+      "ecosystem": "pypi",
+      "label": "Chroma (vector DB)",
+      "imported": true,
+      "version": "==0.5.5",
+      "declared": true
+    },
+    {
+      "kind": "sdk",
+      "name": "langchain-openai",
+      "locations": [
+        "app.py:5",
+        "requirements.txt:3"
+      ],
+      "ecosystem": "pypi",
+      "label": "LangChain",
+      "imported": true,
+      "declared": true
+    },
+    {
+      "kind": "sdk",
+      "name": "openai",
+      "locations": [
+        "app.py:3",
+        "requirements.txt:1"
+      ],
+      "ecosystem": "pypi",
+      "label": "OpenAI",
+      "imported": true,
+      "version": "==1.51.0",
+      "declared": true
+    },
+    {
+      "kind": "sdk",
+      "name": "sentence-transformers",
+      "locations": [
+        "rag.py:1"
+      ],
+      "ecosystem": "pypi",
+      "label": "Sentence Transformers",
+      "imported": true
+    },
+    {
+      "kind": "sdk",
+      "name": "torch",
+      "locations": [
+        "notebooks/explore.ipynb:3"
+      ],
+      "ecosystem": "pypi",
+      "label": "PyTorch",
+      "imported": true
+    },
+    {
+      "kind": "sdk",
+      "name": "transformers",
+      "locations": [
+        "notebooks/explore.ipynb:1"
+      ],
+      "ecosystem": "pypi",
+      "label": "Hugging Face Transformers",
+      "imported": true
+    },
+    {
+      "kind": "model",
+      "name": "claude-sonnet-4-20250514",
+      "locations": [
+        "app.py:11"
+      ],
+      "source": "identifier"
+    },
+    {
+      "kind": "model",
+      "name": "gemini-2.5-flash",
+      "locations": [
+        "config.yaml:3"
+      ],
+      "source": "identifier"
+    },
+    {
+      "kind": "model",
+      "name": "gpt-4.1-mini-2025-04-14",
+      "locations": [
+        "web/chat.ts:6"
+      ],
+      "source": "identifier"
+    },
+    {
+      "kind": "model",
+      "name": "gpt-4o",
+      "locations": [
+        "app.py:10"
+      ],
+      "source": "identifier"
+    },
+    {
+      "kind": "model",
+      "name": "sentence-transformers/all-MiniLM-L6-v2",
+      "locations": [
+        "rag.py:4"
+      ],
+      "source": "huggingface-hub"
+    },
+    {
+      "kind": "model",
+      "name": "text-embedding-3-small",
+      "locations": [
+        "app.py:12"
+      ],
+      "source": "identifier"
+    },
+    {
+      "kind": "weights",
+      "name": "models/intent_classifier.pkl",
+      "locations": [
+        "models/intent_classifier.pkl"
+      ],
+      "format": "pickle",
+      "size": 25
+    },
+    {
+      "kind": "weights",
+      "name": "models/reranker.safetensors",
+      "locations": [
+        "models/reranker.safetensors"
+      ],
+      "format": "safetensors",
+      "size": 30
+    },
+    {
+      "kind": "endpoint",
+      "name": "http://api.openai.com",
+      "locations": [
+        "app.py:14"
+      ],
+      "provider": "OpenAI"
+    },
+    {
+      "kind": "endpoint",
+      "name": "http://localhost:11434",
+      "locations": [
+        "app.py:13"
+      ],
+      "provider": "Ollama (local)"
+    },
+    {
+      "kind": "endpoint",
+      "name": "https://generativelanguage.googleapis.com",
+      "locations": [
+        "config.yaml:4"
+      ],
+      "provider": "Google Gemini"
+    },
+    {
+      "kind": "mcp-server",
+      "name": "github",
+      "locations": [
+        ".cursor/mcp.json:3"
+      ],
+      "transport": "stdio",
+      "target": "npx -y @modelcontextprotocol/server-github"
+    },
+    {
+      "kind": "agent-file",
+      "name": "AGENTS.md",
+      "locations": [
+        "AGENTS.md"
+      ],
+      "role": "instructions"
+    },
+    {
+      "kind": "credential-env",
+      "name": "ANTHROPIC_API_KEY",
+      "locations": [
+        "app.py:9"
+      ]
+    },
+    {
+      "kind": "credential-env",
+      "name": "GEMINI_API_KEY",
+      "locations": [
+        ".env.example:2"
+      ]
+    },
+    {
+      "kind": "credential-env",
+      "name": "HF_TOKEN",
+      "locations": [
+        ".env.example:3"
+      ]
+    },
+    {
+      "kind": "credential-env",
+      "name": "OPENAI_API_KEY",
+      "locations": [
+        ".env.example:1",
+        "app.py:8"
+      ]
+    }
+  ],
+  "notes": [],
+  "summary": {
+    "sdk": 11,
+    "model": 6,
+    "weights": 2,
+    "endpoint": 3,
+    "mcp-server": 2,
+    "agent-file": 1,
+    "credential-env": 4
+  }
+}

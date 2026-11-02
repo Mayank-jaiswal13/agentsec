@@ -1,0 +1,28 @@
+# FAKE example: an issue-triage bot that pastes the issue straight into the prompt.
+name: AI issue triage
+on:
+  issues:
+    types: [opened, edited]
+  issue_comment:
+    types: [created]
+permissions: write-all
+env:
+  DEPLOY_KEY: ${{ secrets.PROD_DEPLOY_KEY }}
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ask the model
+        uses: actions/ai-inference@v1
+        with:
+          prompt: |
+            Triage this issue and label it.
+            Title: ${{ github.event.issue.title }}
+            Body: ${{ github.event.issue.body }}
+      - name: Run Gemini CLI with YOLO
+        run: |
+          npx @google/gemini-cli --yolo -p "Fix the bug described here: ${{ github.event.comment.body }}"
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}

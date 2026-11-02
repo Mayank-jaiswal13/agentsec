@@ -1,0 +1,23 @@
+# Hardened example: scheduled job, no untrusted input, explicit read-only permissions.
+name: nightly AI changelog
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  summarize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+          fetch-depth: 50
+      - name: Summarize recent commits
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          git log --oneline -50 > log.txt
+          curl -s https://api.openai.com/v1/responses -H "Authorization: Bearer $OPENAI_API_KEY" \
+            -d @request.json > summary.json

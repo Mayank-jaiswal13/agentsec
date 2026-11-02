@@ -1,0 +1,17 @@
+# FAKE example: Codex autofix on comments with the sandbox disabled.
+name: codex autofix
+on: [issue_comment]
+jobs:
+  fix:
+    if: contains(github.event.comment.body, '/codex')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          sandbox: danger-full-access
+          safety-strategy: unsafe
+          prompt-file: .github/codex/fix.md

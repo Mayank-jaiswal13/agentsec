@@ -1,0 +1,26 @@
+# FAKE example: pull_request_target + checkout of the PR head + an agent with shell.
+name: Claude PR review
+on:
+  pull_request_target:
+    types: [opened, synchronize]
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Review
+        uses: anthropics/claude-code-action@main
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          allowed_non_write_users: "*"
+          claude_args: --allowedTools "Bash(*)" --dangerously-skip-permissions
+          prompt: "Review PR '${{ github.event.pull_request.title }}' from branch ${{ github.head_ref }}"
+        env:
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          ALL: ${{ toJSON(secrets) }}

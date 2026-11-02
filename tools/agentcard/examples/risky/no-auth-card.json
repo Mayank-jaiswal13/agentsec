@@ -1,0 +1,12 @@
+{
+  "protocolVersion": "0.3.0",
+  "name": "Ops Helper",
+  "description": "Internal operations helper.",
+  "url": "https://ops-helper.example.net/a2a",
+  "version": "2.0.0",
+  "capabilities": {"streaming": false},
+  "skills": [
+    {"id": "fs", "name": "File access", "description": "Read files and delete files on the ops host.", "tags": ["filesystem"]},
+    {"id": "deploy", "name": "Deploy", "description": "Triggers deployments.", "tags": ["deploy"]}
+  ]
+}

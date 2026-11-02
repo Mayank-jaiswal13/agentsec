@@ -1,0 +1,26 @@
+{
+  "protocolVersion": "0.3.0",
+  "name": "Itinerary Planner",
+  "description": "Plans multi-city travel itineraries from dates and preferences.",
+  "url": "https://agents.travel.example/a2a/v1",
+  "preferredTransport": "JSONRPC",
+  "additionalInterfaces": [
+    {"url": "https://agents.travel.example/a2a/v1", "transport": "JSONRPC"},
+    {"url": "https://grpc.travel.example/a2a", "transport": "GRPC"}
+  ],
+  "provider": {"organization": "Travel Example Inc.", "url": "https://travel.example"},
+  "version": "1.4.0",
+  "documentationUrl": "https://docs.travel.example/planner",
+  "capabilities": {"streaming": true, "pushNotifications": false},
+  "securitySchemes": {
+    "oidc": {"type": "openIdConnect", "openIdConnectUrl": "https://auth.travel.example/.well-known/openid-configuration"}
+  },
+  "security": [{"oidc": ["planner.read"]}],
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["application/json"],
+  "skills": [
+    {"id": "plan-trip", "name": "Plan trip", "description": "Builds a day-by-day itinerary.",
+     "tags": ["travel", "itinerary"], "examples": ["Plan 4 days in Lisbon in May"]}
+  ],
+  "signatures": [{"protected": "eyJhbGciOiJFUzI1NiJ9", "signature": "FAKE-SIGNATURE-NOT-REAL"}]
+}

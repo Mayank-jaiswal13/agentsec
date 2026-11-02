@@ -1,0 +1,40 @@
+{
+ "messages": [
+  {
+   "role": "user",
+   "content": "What's the weather in Boston?"
+  },
+  {
+   "role": "assistant",
+   "content": [
+    {
+     "type": "tool_use",
+     "id": "tu1",
+     "name": "get_weather",
+     "input": {
+      "city": "Boston"
+     }
+    }
+   ]
+  },
+  {
+   "role": "user",
+   "content": [
+    {
+     "type": "tool_result",
+     "tool_use_id": "tu1",
+     "content": "52F, cloudy"
+    }
+   ]
+  },
+  {
+   "role": "assistant",
+   "content": [
+    {
+     "type": "text",
+     "text": "It's 52F and cloudy in Boston."
+    }
+   ]
+  }
+ ]
+}

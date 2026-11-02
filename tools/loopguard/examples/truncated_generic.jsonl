@@ -1,0 +1,4 @@
+{"tool": "search_web", "args": {"q": "FAKE-EXAMPLE-query 0"}, "result": "no results"}
+{"tool": "search_web", "args": {"q": "FAKE-EXAMPLE-query 1"}, "result": "no results"}
+{"tool": "search_web", "args": {"q": "FAKE-EXAMPLE-query 2"}, "result": "no results"}
+{"tool": "search_web", "args": {"q": "another"}}

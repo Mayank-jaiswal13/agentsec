@@ -1,6 +1,6 @@
 # agentsec
 
-**agentsec** is a kit of 17 small, offline security tools for people building and running AI
+**agentsec** is a kit of 18 small, offline security tools for people building and running AI
 agents: MCP servers and clients, coding agents, RAG pipelines and tool-calling apps.
 
 Each tool is a single Python file that uses **only the standard library**. There is nothing to
@@ -32,6 +32,7 @@ built from fake data, and a unittest suite.
 | [aibom](tools/aibom/) | AI bill of materials for a repo: LLM/agent SDKs, model IDs, weight files, AI endpoints, MCP servers, agent files and key env-var names, with governance notes (pickle weights, unpinned deps, floating model aliases) and a baseline diff to catch shadow AI in CI. Outputs text, JSON or CycloneDX 1.6 | `python3 aibom.py examples/sample_app --baseline examples/baseline.json` |
 | [trifecta](tools/trifecta/) | Finds the "lethal trifecta" across an agent's whole toolset: private-data, untrusted-content and exfiltration tools (plus shell, delete and pay actions) available to the same agent, even when they are spread across MCP servers. It names the smallest group of tools to remove or gate. Reads MCP `tools/list`, OpenAI and Anthropic tool definitions | `python3 trifecta.py examples/agent` |
 | [pickleprobe](tools/pickleprobe/) | Checks pickle-based model files (PyTorch `.pt`/`.pth`/`.ckpt`, `.pkl`, joblib, NumPy `.npy`/`.npz`, Keras `.keras`) for code-execution risk *without loading them*: dangerous imports like `os.system` or `exec`, unknown classes, pickles disguised as `.safetensors`, object arrays, Keras Lambda layers and path-traversal archive members | `python3 examples/make_examples.py && python3 pickleprobe.py examples/risky` |
+| [promptleak](tools/promptleak/) | Detects system-prompt leakage in transcripts and model outputs: bulk or verbatim reproduction of the system/developer prompt, leaked confidential lines, protected strings, and prompt text smuggled out base64/hex-encoded in tool-call arguments. It also notes user turns that look like extraction attempts | `python3 promptleak.py examples/leaky_transcript.json` |
 
 Run the "Try it" commands from inside the tool's folder (`cd tools/<name>`). Every tool
 supports `--help` and `--json`. Eight tools also emit SARIF (`--sarif`), and most have a `--fail-on` /
@@ -55,7 +56,7 @@ such as `scopefit_mapping.json`, `slopcheck_known.json` or `prices.json`) onto y
 ### Run the tests
 
 ```sh
-python3 run_tests.py            # all 17 suites (or: make test)
+python3 run_tests.py            # all 18 suites (or: make test)
 python3 run_tests.py toolgate   # one tool
 ```
 
@@ -69,14 +70,14 @@ Python 3.10, 3.11, 3.12 and 3.13 on `ubuntu-latest` for every push and pull requ
   through a series of build sessions, one tool at a time. A human chose the direction and
   reviewed the result before release. Treat the code as you would any new, lightly reviewed
   open-source project: read it before relying on it.
-- **What it was tested against.** Each tool ships with a unittest suite (784 tests in total)
+- **What it was tested against.** Each tool ships with a unittest suite (826 tests in total)
   and with example inputs built from **synthetic, fake data**: fake keys, fake transcripts,
   fake configs and fake documents. The tests check rule behavior, output formats and CLI exit
   codes against those fixtures. The tools have **not** been benchmarked against real-world
   corpora, real attack datasets, or the live schemas of every agent or MCP client they parse.
 - **Known limits.**
   - *Observed versus inferred.* Tools that read transcripts (tracesweep, runledger, rundiff,
-    scopefit, toolgate) only see what was logged. They cannot see runtime side effects, real
+    scopefit, toolgate, promptleak) only see what was logged. They cannot see runtime side effects, real
     token scopes or unlogged calls. Some results are inferences: for example, scopefit maps
     endpoints to permissions using a best-effort subset of the GitHub docs, and slopcheck
     compares names with a bundled snapshot rather than the live registry. The tool READMEs say

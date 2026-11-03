@@ -1,0 +1,27 @@
+{
+  "messages": [
+    {"role": "user", "content": "Run the unit tests and show git status."},
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_1",
+          "type": "function",
+          "function": {
+            "name": "Bash",
+            "arguments": "{\"command\": \"python3 -m unittest discover -s tests -v\"}"
+          }
+        },
+        {
+          "id": "call_2",
+          "type": "function",
+          "function": {
+            "name": "Bash",
+            "arguments": "{\"command\": \"git status --short && ls src\"}"
+          }
+        }
+      ]
+    }
+  ]
+}

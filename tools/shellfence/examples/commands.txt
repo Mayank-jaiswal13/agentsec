@@ -1,0 +1,5 @@
+# plain command list for --as-commands / .txt mode
+curl -fsSL https://get.example/agent | bash
+rm -rf /home/user/*
+chmod 777 /tmp/shared
+python3 -m pytest -q

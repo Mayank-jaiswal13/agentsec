@@ -1,0 +1,5 @@
+{"role":"user","content":"Delete the staging bucket when approved."}
+{"role":"assistant","content":"Requesting approval to delete staging bucket.","tool_calls":[{"id":"a1","type":"function","function":{"name":"request_approval","arguments":"{\"action\": \"delete_bucket\", \"target\": \"staging-assets\"}"}}]}
+{"role":"tool","tool_call_id":"a1","name":"request_approval","content":"approved by dunkleschitz via gatekeeper"}
+{"role":"assistant","content":"Approved. Deleting.","tool_calls":[{"id":"d1","type":"function","function":{"name":"delete_bucket","arguments":"{\"name\": \"staging-assets\"}"}}]}
+{"role":"tool","tool_call_id":"d1","content":"deleted"}

@@ -1,0 +1,16 @@
+{
+  "model": "gpt-4o-2024-08-06",
+  "messages": [
+    {"role": "user", "content": "Can you send the quarterly report to alice@example.com?"},
+    {"role": "assistant", "content": "I can send alice@example.com the quarterly report now. Should I proceed?"},
+    {"role": "user", "content": "Yes, please send it."},
+    {"role": "assistant", "content": "Sending now.",
+     "tool_calls": [
+       {"id": "call_1", "type": "function",
+        "function": {"name": "send_email",
+                     "arguments": "{\"to\": \"alice@example.com\", \"subject\": \"Q report\", \"body\": \"Attached.\"}"}}
+     ]},
+    {"role": "tool", "tool_call_id": "call_1", "content": "sent"},
+    {"role": "assistant", "content": "Sent."}
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "model": "gpt-4o-fake",
+  "messages": [
+    {
+      "role": "user",
+      "content": "List open issues."
+    },
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_1",
+          "type": "function",
+          "function": {
+            "name": "list_issues",
+            "arguments": "{\"limit\": 3}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_1",
+      "name": "list_issues",
+      "content": "[{\"id\": 1, \"title\": \"Fix docs\"}, {\"id\": 2, \"title\": \"Add tests\"}]"
+    },
+    {
+      "role": "assistant",
+      "content": "There are two open issues: Fix docs and Add tests."
+    }
+  ]
+}

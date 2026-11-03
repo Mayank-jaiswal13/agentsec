@@ -1,0 +1,3 @@
+{"turn": 0, "tool": "http_request", "args": {"method": "GET", "url": "http://metadata.google.internal/computeMetadata/v1/"}}
+{"turn": 1, "tool": "open_url", "arguments": {"url": "https://xn--exmple-cua.com/login"}}
+{"turn": 2, "tool": "search_docs", "args": {"query": "ssrf"}}

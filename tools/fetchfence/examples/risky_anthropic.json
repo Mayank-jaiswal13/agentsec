@@ -1,0 +1,35 @@
+{
+  "model": "claude-fake",
+  "messages": [
+    {"role": "user", "content": "Check internal status pages."},
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "tu_1",
+          "name": "web_fetch",
+          "input": {"url": "http://status.corp.internal/health"}
+        },
+        {
+          "type": "tool_use",
+          "id": "tu_2",
+          "name": "web_fetch",
+          "input": {"url": "file:///etc/passwd"}
+        },
+        {
+          "type": "tool_use",
+          "id": "tu_3",
+          "name": "browser_navigate",
+          "input": {"url": "http://[::1]:9200/_cat/indices"}
+        },
+        {
+          "type": "tool_use",
+          "id": "tu_4",
+          "name": "web_fetch",
+          "input": {"url": "https://bit.ly/FAKE-EXAMPLE-short"}
+        }
+      ]
+    }
+  ]
+}

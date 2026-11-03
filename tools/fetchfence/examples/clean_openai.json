@@ -1,0 +1,26 @@
+{
+  "model": "gpt-4o-fake",
+  "messages": [
+    {"role": "user", "content": "Fetch the public docs."},
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_1",
+          "type": "function",
+          "function": {
+            "name": "WebFetch",
+            "arguments": "{\"url\": \"https://docs.example.com/agentsec/fetchfence\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_1",
+      "content": "Fetchfence docs — offline SSRF auditor."
+    },
+    {"role": "assistant", "content": "Here is a summary of the docs."}
+  ]
+}

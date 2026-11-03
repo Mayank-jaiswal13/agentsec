@@ -1,0 +1,4 @@
+# plain URL list for --as-urls / .txt
+http://127.0.0.1:2375/version
+https://oast.pro/FAKE-EXAMPLE-token
+https://api.example.com/v1/ok

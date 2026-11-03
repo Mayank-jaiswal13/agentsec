@@ -1,0 +1,44 @@
+{
+  "model": "gpt-4o-fake",
+  "messages": [
+    {"role": "user", "content": "Look up our instance identity and also ping the canary."},
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_1",
+          "type": "function",
+          "function": {
+            "name": "WebFetch",
+            "arguments": "{\"url\": \"http://169.254.169.254/latest/meta-data/\"}"
+          }
+        },
+        {
+          "id": "call_2",
+          "type": "function",
+          "function": {
+            "name": "browse_page",
+            "arguments": "{\"url\": \"https://webhook.site/FAKE-EXAMPLE-callback-001\"}"
+          }
+        },
+        {
+          "id": "call_3",
+          "type": "function",
+          "function": {
+            "name": "http_get",
+            "arguments": "{\"url\": \"https://user:FAKE-EXAMPLE-password@10.0.0.5:6379/info\"}"
+          }
+        },
+        {
+          "id": "call_4",
+          "type": "function",
+          "function": {
+            "name": "fetch_url",
+            "arguments": "{\"url\": \"https://docs.example.com/guide?api_key=FAKE-EXAMPLE-KEY-12345678\"}"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "messages": [
+    {"role": "user", "content": "What's the weather in Boston?"},
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_wx_1",
+          "type": "function",
+          "function": {"name": "get_weather", "arguments": "{\"city\": \"Boston\"}"}
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_wx_1",
+      "name": "get_weather",
+      "content": "{\"city\": \"Boston\", \"temp_c\": 12, \"conditions\": \"cloudy\", \"source\": \"https://weather.example.com/boston\"}"
+    },
+    {"role": "assistant", "content": "It's currently 12°C and cloudy in Boston."}
+  ]
+}

@@ -1,6 +1,6 @@
 # agentsec
 
-**agentsec** is a kit of 23 small, offline security tools for people building and running AI
+**agentsec** is a kit of 24 small, offline security tools for people building and running AI
 agents: MCP servers and clients, coding agents, RAG pipelines and tool-calling apps.
 
 Each tool is a single Python file that uses **only the standard library**. There is nothing to
@@ -38,6 +38,7 @@ built from fake data, and a unittest suite.
 | [agentcard](tools/agentcard/) | Audits A2A (Agent2Agent) Agent Cards (`agent-card.json`) with an A–F grade: agents anyone can call, anonymous `{}` requirements, plaintext or private/metadata-IP endpoints, inline keys, weak auth (query API keys, Basic, implicit/password OAuth), off-domain interfaces, unsigned cards, risky skills, and prompt injection hidden in skill descriptions that orchestrator LLMs read | `python3 agentcard.py examples/risky` |
 | [loopguard](tools/loopguard/) | Finds runaway loops in agent transcripts: identical tool calls repeated back-to-back (critical when the tool sends, posts, deletes, pays or deploys), A-B-A-B cycles, error retry storms, polling that never makes progress, call-budget blowups and runs that end mid-tool-call. Reads OpenAI, Anthropic and generic JSON/JSONL | `python3 loopguard.py examples/runaway_openai.json` |
 | [toolpin](tools/toolpin/) | Pins MCP tool definitions in a hashed lockfile and catches "rug pulls" later: description changes (escalated for injection phrasing, URLs, exfil words or hidden Unicode), new url/command/recipient parameters, dropped enums and loosened types, readOnly/destructive annotation flips, renames, new servers and cross-server tool shadowing. CI gate with `--fail-on` | `python3 toolpin.py check examples/drifted.json -l examples/toolpin.lock.json` |
+| [resultguard](tools/resultguard/) | Scans *tool results* (the content tools return to the model) for indirect prompt injection: override/jailbreak phrasing, fake role tokens, hidden Unicode, tool-chaining bait, exfil/callback URLs, encoded instruction blobs, credential harvest and conceal-from-user instructions. OpenAI, Anthropic and generic transcripts, or standalone result files | `python3 resultguard.py examples/poisoned_openai.json` |
 
 Run the "Try it" commands from inside the tool's folder (`cd tools/<name>`). Every tool
 supports `--help` and `--json`. Eleven tools also emit SARIF (`--sarif`), and most have a `--fail-on` /
@@ -61,7 +62,7 @@ such as `scopefit_mapping.json`, `slopcheck_known.json` or `prices.json`) onto y
 ### Run the tests
 
 ```sh
-python3 run_tests.py            # all 23 suites (or: make test)
+python3 run_tests.py            # all 24 suites (or: make test)
 python3 run_tests.py toolgate   # one tool
 ```
 
@@ -75,7 +76,7 @@ Python 3.10, 3.11, 3.12 and 3.13 on `ubuntu-latest` for every push and pull requ
   through a series of build sessions, one tool at a time. A human chose the direction and
   reviewed the result before release. Treat the code as you would any new, lightly reviewed
   open-source project: read it before relying on it.
-- **What it was tested against.** Each tool ships with a unittest suite (1064 tests in total)
+- **What it was tested against.** Each tool ships with a unittest suite (1113 tests in total)
   and with example inputs built from **synthetic, fake data**: fake keys, fake transcripts,
   fake configs and fake documents. The tests check rule behavior, output formats and CLI exit
   codes against those fixtures. The tools have **not** been benchmarked against real-world

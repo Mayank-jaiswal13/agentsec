@@ -1,0 +1,7 @@
+{
+  "model": "gpt-4o",
+  "messages": [
+    {"role": "user", "content": "Who are you?"},
+    {"role": "assistant", "content": "I am a helpful assistant running on a floating alias."}
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "object": "chat.completion",
+  "choices": [{"message": {"role": "assistant", "content": "No model field here."}}],
+  "usage": {"prompt_tokens": 3, "completion_tokens": 5}
+}

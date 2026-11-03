@@ -1,0 +1,7 @@
+{
+  "model": "bedrock/anthropic.claude-3-5-sonnet-20241022-v1:0",
+  "messages": [
+    {"role": "user", "content": "Route check"},
+    {"role": "assistant", "content": "Served via Bedrock unexpectedly."}
+  ]
+}

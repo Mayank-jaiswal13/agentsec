@@ -1,0 +1,7 @@
+{
+  "model": "claude-3-5-sonnet-20241022",
+  "type": "message",
+  "role": "assistant",
+  "content": [{"type": "text", "text": "All clear."}],
+  "usage": {"input_tokens": 12, "output_tokens": 4}
+}

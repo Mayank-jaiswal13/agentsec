@@ -1,0 +1,4 @@
+{"tool": "read_file", "args": {"path": "~/Documents/notes.md"}, "turn": 0}
+{"tool": "read_file", "args": {"path": "~/.env.production"}, "turn": 1}
+{"tool": "run_command", "arguments": {"command": "cat /etc/passwd"}, "turn": 2}
+{"tool": "search_docs", "args": {"query": "how to rotate keys"}, "turn": 3}

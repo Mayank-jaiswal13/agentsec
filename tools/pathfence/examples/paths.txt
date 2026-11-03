@@ -1,0 +1,6 @@
+# FAKE example paths for pathfence demos
+src/main.py
+/etc/shadow
+~/.ssh/id_ed25519
+../secrets/api_tokens.json
+/var/run/docker.sock

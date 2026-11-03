@@ -1,6 +1,6 @@
 # agentsec
 
-**agentsec** is a kit of 28 small, offline security tools for people building and running AI
+**agentsec** is a kit of 29 small, offline security tools for people building and running AI
 agents: MCP servers and clients, coding agents, RAG pipelines and tool-calling apps.
 
 Each tool is a single Python file that uses **only the standard library**. There is nothing to
@@ -43,6 +43,7 @@ built from fake data, and a unittest suite.
 | [ctxbudget](tools/ctxbudget/) | Checks tool-result *size* against context-window budgets: absolute and critical byte caps, share-of-run, large base64/hex blobs, pathological line lengths, binary-looking content, result floods from one tool, run-wide totals and deep JSON nesting. Complements runledger (cost) and loopguard (loops) | `python3 ctxbudget.py examples/risky_openai.json` |
 | [modelpin](tools/modelpin/) | Pins expected model IDs from a policy and detects floating aliases (`gpt-4o`, `*-latest`), mid-run model switches, provider drift (OpenAI→Bedrock), exact-pin mismatches, missing model fields, deprecated families and capability downgrades in transcripts | `python3 modelpin.py examples/risky_switch.jsonl -p examples/policy_strict.json` |
 | [hitlguard](tools/hitlguard/) | Finds human-in-the-loop gaps in agent transcripts: consequential tools (pay, delete, deploy, send email, force-push, shell `rm`) that fired without a nearby confirm-shaped user turn or approval-tool success, plus spoofed approvals and blanket pre-authorization | `python3 hitlguard.py examples/risky_openai.json --disable HG08` |
+| [pathfence](tools/pathfence/) | Audits file paths an agent actually touched (read/write/shell/fs tools) for sensitive targets: `.env` and credential files, SSH/GPG keys, cloud creds (`~/.aws`, kubeconfig), browser password DBs, `/etc/shadow`, `docker.sock`, path traversal and writes outside `--workspace` roots | `python3 pathfence.py examples/risky_openai.json --disable PF12` |
 
 Run the "Try it" commands from inside the tool's folder (`cd tools/<name>`). Every tool
 supports `--help` and `--json`. Eleven tools also emit SARIF (`--sarif`), and most have a `--fail-on` /
@@ -66,7 +67,7 @@ such as `scopefit_mapping.json`, `slopcheck_known.json` or `prices.json`) onto y
 ### Run the tests
 
 ```sh
-python3 run_tests.py            # all 28 suites (or: make test)
+python3 run_tests.py            # all 29 suites (or: make test)
 python3 run_tests.py toolgate   # one tool
 ```
 
@@ -80,7 +81,7 @@ Python 3.10, 3.11, 3.12 and 3.13 on `ubuntu-latest` for every push and pull requ
   through a series of build sessions, one tool at a time. A human chose the direction and
   reviewed the result before release. Treat the code as you would any new, lightly reviewed
   open-source project: read it before relying on it.
-- **What it was tested against.** Each tool ships with a unittest suite (1268 tests in total)
+- **What it was tested against.** Each tool ships with a unittest suite (1310 tests in total)
   and with example inputs built from **synthetic, fake data**: fake keys, fake transcripts,
   fake configs and fake documents. The tests check rule behavior, output formats and CLI exit
   codes against those fixtures. The tools have **not** been benchmarked against real-world

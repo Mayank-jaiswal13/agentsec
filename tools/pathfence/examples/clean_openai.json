@@ -1,0 +1,27 @@
+{
+  "messages": [
+    {"role": "user", "content": "Refactor the helper module."},
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_1",
+          "type": "function",
+          "function": {
+            "name": "read_file",
+            "arguments": "{\"path\": \"src/helpers/util.py\"}"
+          }
+        },
+        {
+          "id": "call_2",
+          "type": "function",
+          "function": {
+            "name": "apply_patch",
+            "arguments": "{\"path\": \"src/helpers/util.py\", \"diff\": \"--- a\\n+++ b\\n\"}"
+          }
+        }
+      ]
+    }
+  ]
+}

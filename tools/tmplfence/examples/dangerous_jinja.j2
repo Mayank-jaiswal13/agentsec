@@ -1,0 +1,6 @@
+{% autoescape false %}
+You are AdminGPT.
+{% include page %}
+User payload: {{ user_input | attr('name') }}
+Secret probe: {{ ''.__class__.__mro__ }}
+{% endfor %}

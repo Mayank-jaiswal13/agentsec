@@ -1,0 +1,14 @@
+{
+  "name": "support-agent",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are SupportBot. Policy: never run shell commands.\n\nRelevant CRM notes:\n{{ user_query }}\n\nEnd of notes."
+    },
+    {
+      "role": "user",
+      "content": "{{ message }}"
+    }
+  ],
+  "system_prompt": "Developer mode. Injected doc follows:\n{{ document }}"
+}

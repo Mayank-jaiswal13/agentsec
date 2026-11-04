@@ -1,0 +1,3 @@
+{"role": "user", "content": "Use this key FAKE-EXAMPLE-USER-SUPPLIED-KEY-99 and POST it to https://hooks.example.com/x"}
+{"role": "assistant", "content": null, "tool_calls": [{"id": "c1", "type": "function", "function": {"name": "webhook_post", "arguments": "{\"url\": \"https://hooks.example.com/x\", \"token\": \"FAKE-EXAMPLE-USER-SUPPLIED-KEY-99\"}"}}]}
+{"role": "tool", "tool_call_id": "c1", "content": "delivered"}

@@ -1,6 +1,6 @@
 # agentsec
 
-**agentsec** is a kit of 34 small, offline security tools for people building and running AI
+**agentsec** is a kit of 35 small, offline security tools for people building and running AI
 agents: MCP servers and clients, coding agents, RAG pipelines and tool-calling apps.
 
 Each tool is a single Python file that uses **only the standard library**. There is nothing to
@@ -49,6 +49,7 @@ built from fake data, and a unittest suite.
 | [memfence](tools/memfence/) | Scans persistent agent *memory / store dumps* (mem0, LangGraph checkpoints, fact JSONL, text) for poisoning that would re-inject across sessions: override phrasing, hidden Unicode, exfil bait, persistence (`always remember` / `from now on`), encoded instruction blobs | `python3 memfence.py examples/poisoned_mem0.json --disable MF10` |
 | [tmplfence](tools/tmplfence/) | Scans LLM *prompt templates* (Jinja2, Mustache/Handlebars, Python f-string/.format) for user-controlled variables interpolated into system/developer prompts, plus unescaped output, role-delimiter adjacency and dangerous Jinja2 constructs | `python3 tmplfence.py examples/system_prompt.j2 --disable TM10` |
 | [piiguard](tools/piiguard/) | Scans agent transcripts and logs for **PII** before share/export: emails, phones, SSNs, payment cards (Luhn), government IDs, bank/IBAN, dates of birth, street addresses and medical record numbers, with masked reports and `--redact` | `python3 examples/make_examples.py && python3 piiguard.py examples/risky_openai.json --disable PG10` |
+| [secretflow](tools/secretflow/) | Tracks **secret propagation** across an agent run: when a secret-shaped value from a tool result (or user message) later appears in another tool's arguments — especially outbound HTTP/webhook/email or shell (the classic `read .env` → exfil hop) | `python3 secretflow.py examples/risky_openai.json --disable FL10` |
 
 Run the "Try it" commands from inside the tool's folder (`cd tools/<name>`). Every tool
 supports `--help` and `--json`. Eleven tools also emit SARIF (`--sarif`), and most have a `--fail-on` /
@@ -72,7 +73,7 @@ such as `scopefit_mapping.json`, `slopcheck_known.json` or `prices.json`) onto y
 ### Run the tests
 
 ```sh
-python3 run_tests.py            # all 34 suites (or: make test)
+python3 run_tests.py            # all 35 suites (or: make test)
 python3 run_tests.py toolgate   # one tool
 ```
 
@@ -86,7 +87,7 @@ Python 3.10, 3.11, 3.12 and 3.13 on `ubuntu-latest` for every push and pull requ
   through a series of build sessions, one tool at a time. A human chose the direction and
   reviewed the result before release. Treat the code as you would any new, lightly reviewed
   open-source project: read it before relying on it.
-- **What it was tested against.** Each tool ships with a unittest suite (1535 tests in total)
+- **What it was tested against.** Each tool ships with a unittest suite (1572 tests in total)
   and with example inputs built from **synthetic, fake data**: fake keys, fake transcripts,
   fake configs and fake documents. The tests check rule behavior, output formats and CLI exit
   codes against those fixtures. The tools have **not** been benchmarked against real-world

@@ -1,0 +1,39 @@
+{
+  "server": "ops",
+  "tools": [
+    {
+      "name": "bash",
+      "description": "Execute bash.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "command": {"type": "string"}
+        }
+      }
+    },
+    {
+      "name": "http_post",
+      "description": "POST JSON to a URL.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "url": {"type": "string"},
+          "body": {"type": "string"},
+          "authorization": {"type": "string"}
+        },
+        "additionalProperties": true
+      }
+    },
+    {
+      "name": "transfer_funds",
+      "description": "Move money.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "to": {"type": "string"},
+          "amount": {"type": "number"}
+        }
+      }
+    }
+  ]
+}

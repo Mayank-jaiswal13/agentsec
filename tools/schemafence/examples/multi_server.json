@@ -1,0 +1,35 @@
+{
+  "fs": {
+    "tools": [
+      {
+        "name": "read_file",
+        "description": "Read a workspace file.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "pattern": "^workspaces/[a-z0-9_/-]+$"
+            }
+          },
+          "required": ["path"],
+          "additionalProperties": false
+        },
+        "annotations": {"readOnlyHint": true}
+      }
+    ]
+  },
+  "mail": [
+    {
+      "name": "send_message",
+      "description": "Send a chat message.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "channel": {"type": "string"},
+          "text": {"type": "string"}
+        }
+      }
+    }
+  ]
+}

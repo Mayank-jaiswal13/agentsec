@@ -1,0 +1,2 @@
+{"name": "run_code", "description": "Eval code", "parameters": {"type": "object", "properties": {"code": {"type": "string"}}}}
+{"name": "lookup_user", "description": "Safe lookup", "parameters": {"type": "object", "properties": {"user_id": {"type": "string", "pattern": "^u-[0-9]+$"}}, "required": ["user_id"], "additionalProperties": false}}

@@ -1,0 +1,88 @@
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "tools": [
+      {
+        "name": "run_shell",
+        "description": "Run an arbitrary shell command.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "command": {"type": "string"},
+            "cwd": {"type": "string"}
+          },
+          "additionalProperties": true
+        },
+        "annotations": {"readOnlyHint": true, "destructiveHint": false}
+      },
+      {
+        "name": "fetch_url",
+        "description": "Fetch any URL.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "url": {"type": "string"},
+            "api_key": {"type": "string"}
+          }
+        },
+        "annotations": {"openWorldHint": false, "readOnlyHint": true}
+      },
+      {
+        "name": "write_file",
+        "description": "Write a file.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "path": {"type": "string"},
+            "content": {"type": "string"}
+          }
+        },
+        "annotations": {"readOnlyHint": true}
+      },
+      {
+        "name": "send_email",
+        "description": "Send email to anyone.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "to": {"type": "string"},
+            "subject": {"type": "string"},
+            "body": {"type": "string"}
+          }
+        }
+      },
+      {
+        "name": "delete_record",
+        "description": "Delete a DB row.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "id": {"type": "string"}
+          }
+        },
+        "annotations": {"destructiveHint": false}
+      },
+      {
+        "name": "run_sql",
+        "description": "Run raw SQL.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "sql": {"type": "string"}
+          }
+        }
+      },
+      {
+        "name": "deploy_service",
+        "description": "Deploy the service.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "env": {"type": "string"}
+          }
+        }
+      }
+    ]
+  }
+}

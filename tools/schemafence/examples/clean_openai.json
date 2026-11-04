@@ -1,0 +1,59 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "get_weather",
+      "description": "Weather for an allow-listed city.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "city": {
+            "type": "string",
+            "enum": ["nyc", "sfo", "lon"]
+          }
+        },
+        "required": ["city"],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "fetch_status",
+      "description": "Fetch a status page from a fixed allow-list.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "enum": [
+              "https://status.example.com/api",
+              "https://status2.example.com/api"
+            ]
+          }
+        },
+        "required": ["url"],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "read_note",
+      "description": "Read a note by id.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "note_id": {
+            "type": "string",
+            "pattern": "^note-[a-z0-9]{8}$"
+          }
+        },
+        "required": ["note_id"],
+        "additionalProperties": false
+      }
+    }
+  }
+]

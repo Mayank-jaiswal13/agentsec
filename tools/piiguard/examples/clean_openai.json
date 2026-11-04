@@ -1,0 +1,12 @@
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": "Summarize yesterday's deploy notes."
+    },
+    {
+      "role": "assistant",
+      "content": "Deploy succeeded. No customer data was needed."
+    }
+  ]
+}

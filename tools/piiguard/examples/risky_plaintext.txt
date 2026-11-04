@@ -1,0 +1,7 @@
+Customer follow-up
+
+Email: carol.demo@example.net
+Phone: 555-867-5309
+Date of birth: March 14, 1985
+Address: 42 Demo Avenue, Apt 3B, Austin, TX 78701
+National ID: NID-FAKE-998877

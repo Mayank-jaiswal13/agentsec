@@ -1,0 +1,19 @@
+{
+  "memories": [
+    {
+      "id": "c1",
+      "memory": "User prefers dark mode and 24-hour clock formatting.",
+      "user_id": "user-demo"
+    },
+    {
+      "id": "c2",
+      "memory": "Project codename is Harbor; deploy target is staging.example.com.",
+      "user_id": "user-demo"
+    },
+    {
+      "id": "c3",
+      "memory": "Remember the sprint ends next Friday; no production changes on Fridays.",
+      "user_id": "user-demo"
+    }
+  ]
+}

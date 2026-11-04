@@ -1,6 +1,6 @@
 # agentsec
 
-**agentsec** is a kit of 31 small, offline security tools for people building and running AI
+**agentsec** is a kit of 32 small, offline security tools for people building and running AI
 agents: MCP servers and clients, coding agents, RAG pipelines and tool-calling apps.
 
 Each tool is a single Python file that uses **only the standard library**. There is nothing to
@@ -46,6 +46,7 @@ built from fake data, and a unittest suite.
 | [pathfence](tools/pathfence/) | Audits file paths an agent actually touched (read/write/shell/fs tools) for sensitive targets: `.env` and credential files, SSH/GPG keys, cloud creds (`~/.aws`, kubeconfig), browser password DBs, `/etc/shadow`, `docker.sock`, path traversal and writes outside `--workspace` roots | `python3 pathfence.py examples/risky_openai.json --disable PF12` |
 | [shellfence](tools/shellfence/) | Audits shell *commands* an agent ran via Bash/shell/terminal tools for dangerous patterns: `curl\|sh`, `rm -rf /`, reverse shells, encoded eval, `chmod 777`, force-push/publish, firewall flushes, env exfil and crontab persistence | `python3 shellfence.py examples/risky_openai.json --disable SF12` |
 | [schemafence](tools/schemafence/) | Audits AI tool / MCP / OpenAI / Anthropic *input schemas* for unconstrained high-privilege parameters (`command`, `url`, `path`, `to`, secrets, SQL), `additionalProperties: true`, and readOnly/destructive/openWorld annotation contradictions | `python3 schemafence.py examples/risky_mcp.json --disable SK10` |
+| [memfence](tools/memfence/) | Scans persistent agent *memory / store dumps* (mem0, LangGraph checkpoints, fact JSONL, text) for poisoning that would re-inject across sessions: override phrasing, hidden Unicode, exfil bait, persistence (`always remember` / `from now on`), encoded instruction blobs | `python3 memfence.py examples/poisoned_mem0.json --disable MF10` |
 
 Run the "Try it" commands from inside the tool's folder (`cd tools/<name>`). Every tool
 supports `--help` and `--json`. Eleven tools also emit SARIF (`--sarif`), and most have a `--fail-on` /
@@ -69,7 +70,7 @@ such as `scopefit_mapping.json`, `slopcheck_known.json` or `prices.json`) onto y
 ### Run the tests
 
 ```sh
-python3 run_tests.py            # all 31 suites (or: make test)
+python3 run_tests.py            # all 32 suites (or: make test)
 python3 run_tests.py toolgate   # one tool
 ```
 
@@ -83,7 +84,7 @@ Python 3.10, 3.11, 3.12 and 3.13 on `ubuntu-latest` for every push and pull requ
   through a series of build sessions, one tool at a time. A human chose the direction and
   reviewed the result before release. Treat the code as you would any new, lightly reviewed
   open-source project: read it before relying on it.
-- **What it was tested against.** Each tool ships with a unittest suite (1395 tests in total)
+- **What it was tested against.** Each tool ships with a unittest suite (1440 tests in total)
   and with example inputs built from **synthetic, fake data**: fake keys, fake transcripts,
   fake configs and fake documents. The tests check rule behavior, output formats and CLI exit
   codes against those fixtures. The tools have **not** been benchmarked against real-world

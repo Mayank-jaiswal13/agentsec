@@ -33,6 +33,8 @@ python3 run_tests.py toolgate   # one tool
 
 ## The tools
 
+New here? Start with the [Which tool should I run? guide](docs/which-tool.md).
+
 | Tool | What it does | Try it |
 |---|---|---|
 | [toolpoison](tools/toolpoison/) | Scans MCP tool manifests for hidden instructions, invisible Unicode, exfil hints, and cross-tool shadowing | `python3 toolpoison.py examples/poisoned.json` |

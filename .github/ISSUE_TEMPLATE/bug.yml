@@ -1,0 +1,53 @@
+name: Bug report
+description: Something in a tool or in the repo itself is broken.
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. Please use **fake** secrets only in fixtures and
+        screenshots. Vulnerabilities in the tools belong in a
+        [private advisory](https://github.com/dunkleschitz/agentsec/security/advisories/new),
+        not here.
+  - type: input
+    id: tool
+    attributes:
+      label: Tool or area
+      description: Tool name (for example `mcpposture`) or `repo` / `docs` / `ci`.
+      placeholder: mcpposture
+    validations:
+      required: true
+  - type: input
+    id: python
+    attributes:
+      label: Python version
+      placeholder: "3.12"
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: Command
+      description: The exact command you ran.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include relevant output or a traceback. Redact anything real.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimal input (optional)
+      description: A short fake fixture, or a link to a gist. No real secrets or personal data.

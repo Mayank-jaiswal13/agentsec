@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/dunkleschitz/agentsec/security/advisories/new
+    about: Report a vulnerability in a tool privately (do not file a public issue).
+  - name: Discussions
+    url: https://github.com/dunkleschitz/agentsec/discussions
+    about: Questions, ideas, and show-and-tell that are not bug reports.

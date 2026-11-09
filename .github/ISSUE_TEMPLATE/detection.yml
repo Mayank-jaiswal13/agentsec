@@ -1,0 +1,49 @@
+name: Detection bypass or false positive
+description: A case the scanner should (or should not) have flagged.
+title: "[detection] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for missed detections and noisy false positives. If you believe
+        a bypass is being actively exploited, please use a
+        [private advisory](https://github.com/dunkleschitz/agentsec/security/advisories/new)
+        instead. Fixtures must use **fake** data only.
+  - type: input
+    id: tool
+    attributes:
+      label: Tool
+      placeholder: ragsieve
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      options:
+        - Missed detection (false negative)
+        - False positive
+        - Unsure
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: Command and output
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: input
+    attributes:
+      label: Minimal input
+      description: A short fake fixture that reproduces the issue. No real secrets, tokens, or personal data.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true

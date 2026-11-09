@@ -1,6 +1,7 @@
 # Contributing
 
-Thanks for helping. A few ground rules keep the kit easy to use and audit:
+Thanks for helping. Please also read the [Code of Conduct](CODE_OF_CONDUCT.md).
+A few ground rules keep the kit easy to use and audit:
 
 - **Standard library only.** Each tool is a single Python file that runs on Python 3.10+
   with no third-party dependencies. Please don't add any.
@@ -22,3 +23,12 @@ Thanks for helping. A few ground rules keep the kit easy to use and audit:
   `2` usage or input errors.
 
 Open an issue before large changes (new tools, new output formats) so we can agree on scope.
+Issues labeled [good first issue](https://github.com/dunkleschitz/agentsec/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
+are written to be small and self-contained.
+
+## Pull requests
+
+- One change per PR when you can (a rule, a format, or a docs fix).
+- In the PR description, say how you ran the tests (`python3 run_tests.py` or a single tool).
+- Do not force-push to `main`, rewrite published history, or add real credentials,
+  tokens, private keys or personal data — including in screenshots.

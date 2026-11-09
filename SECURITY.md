@@ -11,7 +11,8 @@ agentsec is a set of offline, heuristic security scanners. Two kinds of reports 
 ## How to report
 
 - For a vulnerability in the tools, please use GitHub's **private vulnerability reporting**
-  ("Report a vulnerability" under the repository's *Security* tab) rather than a public issue.
+  ([Report a vulnerability](https://github.com/dunkleschitz/agentsec/security/advisories/new)
+  under the repository's *Security* tab) rather than a public issue.
 - Detection bypasses and false positives can be filed as normal public issues, unless the
   bypass is something you believe is being actively exploited.
 

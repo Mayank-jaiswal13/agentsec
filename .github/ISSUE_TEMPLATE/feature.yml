@@ -1,0 +1,29 @@
+name: Feature request
+description: A new rule, format, option, or documentation improvement.
+title: "[feat] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: Please open an issue before starting a large change (a new tool or a new output format).
+  - type: input
+    id: tool
+    attributes:
+      label: Tool or area
+      description: Tool name, or `kit` if it applies to several tools.
+      placeholder: resultguard
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: Be concrete if you can (flag name, input format, rule idea). Remember new code must stay on the Python standard library.
+    validations:
+      required: true
